@@ -45,7 +45,12 @@ router.get('/components', (req, res) => {
                 console.error('Database error:', err);
                 return res.status(500).json({ error: 'Server error' });
             }
-            res.json(results);
+            // Parse the content field from JSON string to object
+            const parsedResults = results.map((item) => ({
+                ...item,
+                content: typeof item.content === 'string' ? JSON.parse(item.content) : item.content
+            }));
+            res.json(parsedResults);
         }
     );
 });
