@@ -1,0 +1,77 @@
+{
+    "info": {
+      "name": "Web Auto Layout Application API",
+      "_postman_id": "a3e4b7f2-9c2d-4f8a-a7c8-3f7b8c9e6a12",
+      "description": "Postman collection for testing the Web Auto Layout Application's backend APIs",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Admin Login",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"username\": \"admin\", \"password\": \"admin123\"}"
+          },
+          "url": {
+            "raw": "{{baseUrl}}/api/admin/login",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "admin", "login"]
+          },
+          "description": "Authenticates an admin user with simple authentication (plain-text username and password)."
+        },
+        "response": []
+      },
+      {
+        "name": "Get Components",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "{{baseUrl}}/api/components",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "components"]
+          },
+          "description": "Fetches all components and their layout positions for the public page."
+        },
+        "response": []
+      },
+      {
+        "name": "Update Layout",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"components\": [{\"id\": 2, \"position\": 0}, {\"id\": 1, \"position\": 1}, {\"id\": 3, \"position\": 2}, {\"id\": 4, \"position\": 3}, {\"id\": 5, \"position\": 4}]}"
+          },
+          "url": {
+            "raw": "{{baseUrl}}/api/layout",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "layout"]
+          },
+          "description": "Updates the layout by reordering components for the admin's drag-and-drop interface."
+        },
+        "response": []
+      }
+    ],
+    "variable": [
+      {
+        "key": "baseUrl",
+        "value": "http://localhost:5000",
+        "description": "Base URL for the Practice App backend"
+      }
+    ]
+  }
